@@ -3,6 +3,7 @@ __pycache__/
 *.log
 build/
 install/
+videos/
 *.swp
 *.db
 .ros/
