@@ -1,9 +1,0 @@
-source;share/dyno_bot/hook/pythonpath.ps1
-source;share/dyno_bot/hook/pythonpath.dsv
-source;share/dyno_bot/hook/pythonpath.sh
-source;share/dyno_bot/hook/ament_prefix_path.ps1
-source;share/dyno_bot/hook/ament_prefix_path.dsv
-source;share/dyno_bot/hook/ament_prefix_path.sh
-source;../../build/dyno_bot/share/dyno_bot/hook/pythonpath_develop.ps1
-source;../../build/dyno_bot/share/dyno_bot/hook/pythonpath_develop.dsv
-source;../../build/dyno_bot/share/dyno_bot/hook/pythonpath_develop.sh
