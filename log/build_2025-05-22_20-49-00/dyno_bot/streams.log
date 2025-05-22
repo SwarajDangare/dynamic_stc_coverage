@@ -1,0 +1,20 @@
+[0.296s] Invoking command in '/home/swaraj/dynamic_robot/build/dyno_bot': PYTHONPATH=/home/swaraj/dynamic_robot/build/dyno_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/swaraj/dynamic_robot/install/dyno_bot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/swaraj/dynamic_robot/build/dyno_bot/build --no-deps symlink_data
+[0.423s] running develop
+[0.494s] running egg_info
+[0.494s] writing dyno_bot.egg-info/PKG-INFO
+[0.494s] writing dependency_links to dyno_bot.egg-info/dependency_links.txt
+[0.494s] writing entry points to dyno_bot.egg-info/entry_points.txt
+[0.494s] writing requirements to dyno_bot.egg-info/requires.txt
+[0.494s] writing top-level names to dyno_bot.egg-info/top_level.txt
+[0.495s] reading manifest file 'dyno_bot.egg-info/SOURCES.txt'
+[0.495s] writing manifest file 'dyno_bot.egg-info/SOURCES.txt'
+[0.496s] running build_ext
+[0.496s] Creating /home/swaraj/dynamic_robot/install/dyno_bot/lib/python3.10/site-packages/dyno-bot.egg-link (link to .)
+[0.496s] Installing coverage_visualizer script to /home/swaraj/dynamic_robot/install/dyno_bot/lib/dyno_bot
+[0.496s] Installing go_to_goal script to /home/swaraj/dynamic_robot/install/dyno_bot/lib/dyno_bot
+[0.496s] Installing random_mover script to /home/swaraj/dynamic_robot/install/dyno_bot/lib/dyno_bot
+[0.496s] Installing stc_controller script to /home/swaraj/dynamic_robot/install/dyno_bot/lib/dyno_bot
+[0.496s] 
+[0.497s] Installed /home/swaraj/dynamic_robot/build/dyno_bot
+[0.497s] running symlink_data
+[0.509s] Invoked command in '/home/swaraj/dynamic_robot/build/dyno_bot' returned '0': PYTHONPATH=/home/swaraj/dynamic_robot/build/dyno_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/swaraj/dynamic_robot/install/dyno_bot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/swaraj/dynamic_robot/build/dyno_bot/build --no-deps symlink_data

@@ -1,0 +1,6 @@
+[console_scripts]
+coverage_visualizer = dyno_bot.coverage_visualizer:main
+go_to_goal = dyno_bot.go_to_goal:main
+random_mover = dyno_bot.random_mover:main
+stc_controller = dyno_bot.stc_controller:main
+

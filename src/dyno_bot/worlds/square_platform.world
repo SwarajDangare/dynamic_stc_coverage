@@ -1,0 +1,230 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <!-- ROS API plugin for services like /gazebo/set_model_state -->
+    <plugin name="gazebo_ros_init"    filename="libgazebo_ros_init.so"/>
+    <plugin name="gazebo_ros_factory" filename="libgazebo_ros_factory.so"/>
+    <plugin name="gazebo_ros_state"   filename="libgazebo_ros_state.so">
+      <robotNamespace>/</robotNamespace>
+      <publishTf>false</publishTf>
+    </plugin>
+
+    <physics name="default_physics" type="ode">
+      <max_step_size>0.005</max_step_size>
+      <real_time_update_rate>2000</real_time_update_rate>
+    </physics>
+
+
+    <!-- Ground plane (for texture/shadows) -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <include>
+      <uri>model://turtlebot3_burger</uri>
+      <pose>-4.5 -4.5 0.1 0 1.75 </pose>
+    </include>
+
+    <!-- Base plate -->
+    <model name="base_plate">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>10.1 10.1 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>10.1 10.1 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <!-- lift it half-thickness above ground -->
+      <pose>0 0 0.05 0 0 0</pose>
+    </model>
+
+    <!-- Four boundary walls -->
+    <!-- +Y wall -->
+    <model name="wall_y_pos">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>10.1 0.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>10 0.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 5.05 0.5 0 0 0</pose>
+    </model>
+    <!-- -Y wall -->
+    <model name="wall_y_neg">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>10.1 0.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>10.1 0.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 -5.05 0.5 0 0 0</pose>
+    </model>
+    <!-- +X wall -->
+    <model name="wall_x_pos">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>0.1 10.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>0.1 10.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>5.05 0 0.5 0 0 0</pose>
+    </model>
+    <!-- -X wall -->
+    <model name="wall_x_neg">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>0.1 10.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>0.1 10.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>-5.05 0 0.5 0 0 0</pose>
+    </model>
+
+    <!-- Four red boxes -->
+    <model name="red_box_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>1 1 1</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>1 1 1</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-2.5 -2.5 0.5 0 0 0</pose>
+    </model>
+
+    <model name="red_box_2">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>1 1 1</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>1 1 1</size></box></geometry>
+        </collision>
+      </link>
+      <pose>2.5 -2.5 0.5 0 0 0</pose>
+    </model>
+
+    <model name="red_box_3">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>1 1 1</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>1 1 1</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-2.5 2.5 0.5 0 0 0</pose>
+    </model>
+
+    <model name="red_box_4">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>1 1 1</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>1 1 1</size></box></geometry>
+        </collision>
+      </link>
+      <pose>2.5 2.5 0.5 0 0 0</pose>
+    </model>
+
+    <!-- Two blue boxes -->
+    <model name="blue_box_1">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>1 1 1</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>1 1 1</size></box></geometry>
+        </collision>
+      </link>
+      <pose>0.5 -2.5 0.5 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_2">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>1 1 1</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>1 1 1</size></box></geometry>
+        </collision>
+      </link>
+      <pose>0.5 2.5 0.5 0 0 0</pose>
+    </model>
+
+  </world>
+</sdf>
