@@ -1,0 +1,2396 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <!-- ROS API plugin for services like /gazebo/set_model_state -->
+    <plugin name="gazebo_ros_init"    filename="libgazebo_ros_init.so"/>
+    <plugin name="gazebo_ros_factory" filename="libgazebo_ros_factory.so"/>
+    <plugin name="gazebo_ros_state"   filename="libgazebo_ros_state.so">
+      <robotNamespace>/</robotNamespace>
+      <publishTf>false</publishTf>
+    </plugin>
+
+    <physics name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>4000</real_time_update_rate>
+    </physics>
+    
+    <!-- Ground plane (for texture/shadows) -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <!-- <include>
+      <uri>model://turtlebot3_burger</uri>
+      <pose>-4.5 -4.5 0.1 0 1.75 </pose>
+    </include> -->
+
+    <!-- Base plate -->
+    <model name="base_plate">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>30.1 30.1 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>30.1 30.1 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <!-- lift it half-thickness above ground -->
+      <pose>0 0 0.05 0 0 0</pose>
+    </model>
+
+    <!-- Four boundary walls -->
+    <!-- +Y wall -->
+    <model name="wall_y_pos">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>30.1 0.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>30 0.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 15.05 0.5 0 0 0</pose>
+    </model>
+    <!-- -Y wall -->
+    <model name="wall_y_neg">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>30.1 0.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>30.1 0.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 -15.05 0.5 0 0 0</pose>
+    </model>
+    <!-- +X wall -->
+    <model name="wall_x_pos">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>0.1 30.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>0.1 30.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>15.05 0 0.5 0 0 0</pose>
+    </model>
+    <!-- -X wall -->
+    <model name="wall_x_neg">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry>
+            <box><size>0.1 30.1 1</size></box>
+          </geometry>
+        </visual>
+        <collision name="col">
+          <geometry>
+            <box><size>0.1 30.1 1</size></box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>-15.05 0 0.5 0 0 0</pose>
+    </model>
+
+    <!-- Four red boxes -->
+    <!-- Twenty red boxes with random poses centered on the 0.5×0.5 m grid -->
+    <model name="red_box_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>12.25 -2.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_2">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>9.25 13.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_3">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-1.75 -13.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_4">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-6.75 1.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_5">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>0.75 -2.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_6">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>14.25 10.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_7">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>11.75 -5.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_8">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>0.25 -3.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_9">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>3.75 13.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_10">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>14.25 -8.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_11">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>1.25 -10.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_12">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-5.75 -10.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_13">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>9.25 -11.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_14">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>4.75 10.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_15">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-6.75 14.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_16">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>2.25 7.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_17">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>10.75 4.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_18">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>13.75 -10.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_19">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-5.25 -11.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_20">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>8.25 -12.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_21">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-14.25 -6.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_22">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>13.25 12.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_23">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>0.25 -14.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_24">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>7.25 3.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_25">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-2.75 5.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_26">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>4.75 -9.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_27">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-10.25 8.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_28">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>11.75 -1.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_29">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-5.25 12.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="red_box_30">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>9.75 -13.75 0.35 0 0 0</pose>
+    </model>
+
+
+    <!-- Ten blue boxes with random poses on the 0.5×0.5 m grid -->
+    <model name="blue_box_1">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>12.75 -2.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_2">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-9.25 5.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_3">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>5.25 -11.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_4">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>14.25 7.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_5">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>0.25 10.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_6">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-7.75 2.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_7">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>8.75 -9.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_8">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-3.75 13.75 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_9">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>2.75 -13.25 0.35 0 0 0</pose>
+    </model>
+
+    <model name="blue_box_10">
+      <static>false</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.5 0.5 0.5</size></box></geometry>
+        </collision>
+      </link>
+      <pose>-14.75 0.25 0.35 0 0 0</pose>
+    </model>
+
+
+    <model name="grid_h_0">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -15.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -14.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_2">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -14.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_3">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -13.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_4">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -13.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_5">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -12.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_6">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -12.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_7">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -11.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_8">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -11.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_9">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -10.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_10">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -10.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_11">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -9.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_12">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -9.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_13">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -8.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_14">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -8.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_15">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -7.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_16">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -7.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_17">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -6.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_18">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -6.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_19">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -5.500 0.101 0 0 0</pose>
+    </model>
+    <model name="grid_h_20">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -5.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_21">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -4.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_22">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -4.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_23">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -3.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_24">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -3.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_25">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -2.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_26">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -2.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_27">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -1.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_28">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -1.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_29">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 -0.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_30">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 0.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_31">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 0.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_32">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 1.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_33">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 1.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_34">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 2.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_35">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 2.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_36">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 3.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_37">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 3.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_38">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 4.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_39">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 4.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_40">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 5.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_41">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 5.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_42">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 6.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_43">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 6.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_44">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 7.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_45">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 7.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_46">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 8.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_47">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 8.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_48">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 9.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_49">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 9.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_50">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 10.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_51">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 10.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_52">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 11.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_53">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 11.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_54">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 12.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_55">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 12.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_56">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 13.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_57">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 13.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_58">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 14.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_59">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 14.500 0.1010 0 0</pose>
+    </model>
+    <model name="grid_h_60">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 15.000 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_0">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-15.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-14.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_2">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-14.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_3">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-13.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_4">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-13.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_5">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-12.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_6">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-12.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_7">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-11.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_8">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-11.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_9">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-10.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_10">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-10.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_11">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-9.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_12">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-9.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_13">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-8.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_14">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-8.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_15">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-7.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_16">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-7.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_17">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-6.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_18">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-6.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_19">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-5.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_20">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-5.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_21">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-4.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_22">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-4.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_23">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-3.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_24">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-3.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_25">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-2.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_26">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-2.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_27">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-1.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_28">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-1.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_29">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-0.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_30">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_31">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_32">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>1.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_33">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>1.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_34">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>2.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_35">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>2.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_36">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>3.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_37">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>3.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_38">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>4.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_39">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>4.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_40">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>5.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_41">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>5.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_42">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>6.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_43">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>6.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_44">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>7.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_45">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>7.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_46">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>8.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_47">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>8.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_48">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>9.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_49">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>9.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_50">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>10.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_51">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>10.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_52">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>11.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_53">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>11.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_54">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>12.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_55">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>12.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_56">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>13.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_57">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>13.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_58">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>14.000 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_59">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>14.500 0 0.1010 0 0</pose>
+    </model>
+    <model name="grid_v_60">
+      <static>true</static>
+      <link name="link">
+        <visual name="vis">
+          <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>15.000 0 0.1010 0 0</pose>
+    </model>
+  </world>
+</sdf>
