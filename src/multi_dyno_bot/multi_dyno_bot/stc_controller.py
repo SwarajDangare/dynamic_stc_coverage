@@ -367,7 +367,7 @@ class STCController(Node):
         efficiency = unique_visits / max(1, self.step_count)
 
         self.get_logger().info("=== Coverage Statistics ===")
-        self.get_logger().info(f"Time elapsed: {t1 - t0:.1f}s")
+        # self.get_logger().info(f"Time elapsed: {t1 - t0:.1f}s")
         self.get_logger().info(
             f"Steps: {self.step_count}, Unique: {unique_visits}/{total_cells}")
         self.get_logger().info(
