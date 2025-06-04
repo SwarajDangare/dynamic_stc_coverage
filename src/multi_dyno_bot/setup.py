@@ -24,7 +24,7 @@ setup(
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/worlds', ['worlds/square_platform.world']),
-        ('share/' + package_name + '/launch', ['launch/multi_dyno_bot_launch.py', 'launch/multi_dyno_bot_5bots.launch.py']),
+        ('share/' + package_name + '/launch', ['launch/multi_dyno_bot_launch.py', 'launch/multi_dyno_bot_6bots.launch.py']),
         ('share/' + package_name + '/urdf'  , ['urdf/turtlebot3_burger.urdf']),
         ('share/' + package_name + '/models', ['models/turtlebot3_burger/model.sdf']),
     ],

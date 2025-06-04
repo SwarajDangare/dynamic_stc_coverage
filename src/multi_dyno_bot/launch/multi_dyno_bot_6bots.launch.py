@@ -13,25 +13,28 @@ from launch.event_handlers import OnProcessExit
 def generate_launch_description():
     ld = LaunchDescription()
 
-    # --- optional arg if you later want to gate-drive nodes under each namespace ---
+    # --- Optional argument in case you want to gate-drive nodes under each namespace ---
     enable_drive = LaunchConfiguration('enable_drive', default='true')
     ld.add_action(DeclareLaunchArgument(
-        'enable_drive', default_value='true',
+        'enable_drive',
+        default_value='true',
         description='Enable robot drive / STC controller nodes'
     ))
 
-    # --- Gazebo server & client on your custom world ---
+    # --- Launch Gazebo server & client using your custom world file ---
     gazebo_ros_pkg = get_package_share_directory('gazebo_ros')
     world_file = os.path.join(
         get_package_share_directory('multi_dyno_bot'),
         'worlds', 'square_platform.world'
     )
+    # gzserver (loads world, plugins, etc.)
     ld.add_action(IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(gazebo_ros_pkg, 'launch', 'gzserver.launch.py')
         ),
         launch_arguments={'world': world_file}.items()
     ))
+    # gzclient (the GUI)
     ld.add_action(IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(gazebo_ros_pkg, 'launch', 'gzclient.launch.py')
@@ -46,15 +49,18 @@ def generate_launch_description():
         tb3_gazebo_pkg, 'models', 'turtlebot3_burger', 'model.sdf'
     )
 
-    # --- Define your five robot namespaces & start poses ---
+    # --- Define the six robot namespaces & EXACT spawn (x,y) so that each lies at center of its 20×30 block ---
+    #    See partitioning in the explanation above.
     robot_positions = [
-        ('tb1', -4.5, -4.5),
-        ('tb2',  4.5, -4.5),
-        ('tb3', -4.5,  4.5),
-        ('tb4',  4.5,  4.5),
-        ('tb5',  0.0,  0.0),
+        ('tb1',   9.75,  7.25),   # Block 2 (i=40..59, j=30..59)
+        ('tb2',  -0.25,  7.25),   # Block 1 (i=20..39, j=30..59)
+        ('tb3', -10.25,  7.25),   # Block 0 (i= 0..19, j=30..59)
+        ('tb4',   9.75, -7.75),   # Block 5 (i=40..59, j= 0..29)
+        ('tb5',  -0.25, -7.75),   # Block 4 (i=20..39, j= 0..29)
+        ('tb6', -10.25, -7.75),   # Block 3 (i= 0..19, j= 0..29)
     ]
 
+    # --- For each robot, chain spawn + STCController under its namespace ---
     last_spawn = None
     for name, x, y in robot_positions:
         ns = name  # namespace & entity name
@@ -87,7 +93,37 @@ def generate_launch_description():
             ],
         )
 
-        # Chain so each robot is spawned only after the previous one finishes
+        # 3) STC controller under the same namespace, with that robot’s 20×30 bounds
+        #    (sub_imin…sub_jmax correspond to table above)
+        if name == 'tb1':
+            sub_args = {'sub_imin': 40, 'sub_imax': 59, 'sub_jmin': 30, 'sub_jmax': 59}
+        elif name == 'tb2':
+            sub_args = {'sub_imin': 20, 'sub_imax': 39, 'sub_jmin': 30, 'sub_jmax': 59}
+        elif name == 'tb3':
+            sub_args = {'sub_imin': 0,  'sub_imax': 19, 'sub_jmin': 30, 'sub_jmax': 59}
+        elif name == 'tb4':
+            sub_args = {'sub_imin': 40, 'sub_imax': 59, 'sub_jmin': 0,  'sub_jmax': 29}
+        elif name == 'tb5':
+            sub_args = {'sub_imin': 20, 'sub_imax': 39, 'sub_jmin': 0,  'sub_jmax': 29}
+        elif name == 'tb6':
+            sub_args = {'sub_imin': 0,  'sub_imax': 19, 'sub_jmin': 0,  'sub_jmax': 29}
+
+        stc = Node(
+            package='multi_dyno_bot',
+            namespace=ns,
+            executable='stc_controller',
+            name='stc_controller',
+            output='screen',
+            parameters=[
+                {'use_sim_time': True},
+                {'grid_size':   60},
+                {'cell_size':   0.5},
+                {'robot_list':  ['tb1','tb2','tb3','tb4','tb5','tb6']},
+                sub_args,
+            ]
+        )
+
+        # Chain them so each namespace’s STCController only starts after spawn finishes
         if last_spawn is None:
             ld.add_action(rsp)
             ld.add_action(spawn)
@@ -98,32 +134,35 @@ def generate_launch_description():
                     on_exit=[rsp, spawn]
                 )
             ))
+        # Start that robot’s STCController as soon as its spawn is done
+        ld.add_action(RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=spawn,
+                on_exit=[stc]
+            )
+        ))
+
         last_spawn = spawn
 
-    # --- After all robots are spawned, start your mover, STC, and visualizer ---
+    # --- Finally, start random_mover (to move the 10 blue boxes) and the global coverage_visualizer ---
     mover = Node(
         package='multi_dyno_bot',
         executable='random_mover',
         name='random_mover',
         output='screen'
     )
-    stc   = Node(
-        package='multi_dyno_bot',
-        executable='stc_controller',
-        name='stc_controller',
-        output='screen'
-    )
-    viz   = Node(
+    viz = Node(
         package='multi_dyno_bot',
         executable='coverage_visualizer',
         name='coverage_visualizer',
         output='screen'
     )
 
+    # Only launch these once ALL six robots have been spawned
     ld.add_action(RegisterEventHandler(
         event_handler=OnProcessExit(
             target_action=last_spawn,
-            on_exit=[mover, stc, viz]
+            on_exit=[mover, viz]
         )
     ))
 

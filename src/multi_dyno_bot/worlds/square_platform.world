@@ -812,8 +812,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -825,8 +825,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -838,8 +838,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -851,8 +851,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -864,8 +864,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -877,8 +877,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -890,8 +890,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -903,8 +903,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -916,8 +916,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -929,8 +929,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -942,8 +942,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -955,8 +955,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -968,8 +968,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -981,8 +981,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -994,8 +994,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1007,8 +1007,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1020,8 +1020,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1033,8 +1033,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1046,8 +1046,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1059,8 +1059,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1072,8 +1072,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1085,8 +1085,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1098,8 +1098,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1111,8 +1111,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1124,8 +1124,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1137,8 +1137,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1150,8 +1150,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1163,8 +1163,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1176,8 +1176,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1189,8 +1189,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1202,8 +1202,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1215,8 +1215,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1228,8 +1228,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1241,8 +1241,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1254,8 +1254,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1267,8 +1267,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1280,8 +1280,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1293,8 +1293,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1306,8 +1306,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1319,8 +1319,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1332,8 +1332,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1345,8 +1345,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1358,8 +1358,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1371,8 +1371,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1384,8 +1384,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1397,8 +1397,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1410,8 +1410,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1423,8 +1423,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1436,8 +1436,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1449,8 +1449,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1462,8 +1462,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1475,8 +1475,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1488,8 +1488,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1501,8 +1501,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1514,8 +1514,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1527,8 +1527,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1540,8 +1540,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1553,8 +1553,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1566,8 +1566,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1579,8 +1579,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1592,8 +1592,8 @@
         <visual name="vis">
           <geometry><box><size>30.0 0.01 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1605,8 +1605,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1618,8 +1618,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1631,8 +1631,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1644,8 +1644,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1657,8 +1657,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1670,8 +1670,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1683,8 +1683,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1696,8 +1696,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1709,8 +1709,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1722,8 +1722,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1735,8 +1735,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1748,8 +1748,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1761,8 +1761,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1774,8 +1774,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1787,8 +1787,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1800,8 +1800,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1813,8 +1813,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1826,8 +1826,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1839,8 +1839,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1852,8 +1852,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1865,8 +1865,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1878,8 +1878,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1891,8 +1891,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1904,8 +1904,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1917,8 +1917,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1930,8 +1930,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1943,8 +1943,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1956,8 +1956,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1969,8 +1969,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1982,8 +1982,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -1995,8 +1995,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2008,8 +2008,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2021,8 +2021,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2034,8 +2034,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2047,8 +2047,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2060,8 +2060,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2073,8 +2073,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2086,8 +2086,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2099,8 +2099,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2112,8 +2112,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2125,8 +2125,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2138,8 +2138,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2151,8 +2151,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2164,8 +2164,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2177,8 +2177,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2190,8 +2190,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2203,8 +2203,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2216,8 +2216,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2229,8 +2229,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2242,8 +2242,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2255,8 +2255,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2268,8 +2268,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2281,8 +2281,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2294,8 +2294,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2307,8 +2307,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2320,8 +2320,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2333,8 +2333,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2346,8 +2346,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2359,8 +2359,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2372,8 +2372,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
@@ -2385,8 +2385,8 @@
         <visual name="vis">
           <geometry><box><size>0.01 30.0 0.001</size></box></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
           </material>
         </visual>
       </link>
