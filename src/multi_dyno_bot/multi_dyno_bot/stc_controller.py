@@ -220,7 +220,7 @@ class STCController(Node):
             if traveled >= distance - 0.01:  # 1 cm tolerance
                 break
             cmd = Twist()
-            cmd.linear.x = 0.5  # 0.5 m/s forward (was 0.2)
+            cmd.linear.x = 0.2  # 0.5 m/s forward (was 0.2)
             self.cmd_pub.publish(cmd)
             time.sleep(1.0 / rate)
 
@@ -284,7 +284,6 @@ class STCController(Node):
         with self.lock:
             self.get_logger().info(f"Static obstacles: {sorted(self.obstacles)}")
 
-        # 1) Build integer‐cell serpentine order
         order = []
         w, e = self.sub_imin, self.sub_imax
         s, n = self.sub_jmin, self.sub_jmax
@@ -296,7 +295,6 @@ class STCController(Node):
             for i in row:
                 order.append((i, j))
 
-        # 2) First pass: visit cells in that exact serpentine order
         for goal_cell in order:
             with self.lock:
                 if goal_cell in self.visited or goal_cell in self.obstacles:
@@ -318,7 +316,6 @@ class STCController(Node):
                 if self.move_to_cell(next_cell):
                     self.publish_all()
 
-        # 3) Second pass: any remaining unvisited cells inside the subgrid
         subgrid_cells = [
             (i, j)
             for i in range(self.sub_imin, self.sub_imax + 1)
