@@ -220,7 +220,7 @@ class STCController(Node):
             if traveled >= distance - 0.01:  # 1 cm tolerance
                 break
             cmd = Twist()
-            cmd.linear.x = 0.2  # 0.5 m/s forward (was 0.2)
+            cmd.linear.x = 0.5  # 0.5 m/s forward (was 0.2)
             self.cmd_pub.publish(cmd)
             time.sleep(1.0 / rate)
 
@@ -255,9 +255,9 @@ class STCController(Node):
         self.rotate_to(yaw_map[(dx, dy)])
 
         with self.lock:
-            if self.front_dist < 0.2:
+            if self.front_dist < 0.1:
                 # If blocked right in front, abort this step
-                self.get_logger().info(f"Blocked at {cell}")
+                self.get_logger().info(f"Blocked at {cell} and front_dist {self.front_dist}")
                 return False
 
         # Move forward one full cell
@@ -280,99 +280,99 @@ class STCController(Node):
         """
         # Let everything come up (a 1 s pause)
         time.sleep(1.0)
+        if self.robot_ns == 'tb1':
+            # with self.lock:
+            #     self.get_logger().info(f"Static obstacles: {sorted(self.obstacles)}")
 
-        with self.lock:
-            self.get_logger().info(f"Static obstacles: {sorted(self.obstacles)}")
+            order = []
+            w, e = self.sub_imin, self.sub_imax
+            s, n = self.sub_jmin, self.sub_jmax
+            for j in range(s, n + 1):
+                row = list(range(w, e + 1))
+                # serpentine: reverse every other row
+                if (j - s) % 2 == 1:
+                    row.reverse()
+                for i in row:
+                    order.append((i, j))
 
-        order = []
-        w, e = self.sub_imin, self.sub_imax
-        s, n = self.sub_jmin, self.sub_jmax
-        for j in range(s, n + 1):
-            row = list(range(w, e + 1))
-            # serpentine: reverse every other row
-            if (j - s) % 2 == 1:
-                row.reverse()
-            for i in row:
-                order.append((i, j))
+            for goal_cell in order:
+                with self.lock:
+                    if goal_cell in self.visited or goal_cell in self.obstacles:
+                        continue
 
-        for goal_cell in order:
-            with self.lock:
-                if goal_cell in self.visited or goal_cell in self.obstacles:
+                path = self.bfs_path(self.robot_cell, goal_cell)
+                if not path:
                     continue
 
-            path = self.bfs_path(self.robot_cell, goal_cell)
-            if not path:
-                continue
+                for next_cell in path[1:]:
+                    # Very small pause so we don’t hammer the CPU
+                    time.sleep(0.05)
 
-            for next_cell in path[1:]:
-                # Very small pause so we don’t hammer the CPU
-                time.sleep(0.05)
+                    with self.lock:
+                        if next_cell in self.dynamic_obs:
+                            self.get_logger().info(f"Dynamic block at {next_cell}")
+                            break
 
-                with self.lock:
-                    if next_cell in self.dynamic_obs:
-                        self.get_logger().info(f"Dynamic block at {next_cell}")
-                        break
+                    if self.move_to_cell(next_cell):
+                        self.publish_all()
 
-                if self.move_to_cell(next_cell):
-                    self.publish_all()
+            subgrid_cells = [
+                (i, j)
+                for i in range(self.sub_imin, self.sub_imax + 1)
+                for j in range(self.sub_jmin, self.sub_jmax + 1)
+                if (i, j) not in self.visited and (i, j) not in self.obstacles
+            ]
 
-        subgrid_cells = [
-            (i, j)
-            for i in range(self.sub_imin, self.sub_imax + 1)
-            for j in range(self.sub_jmin, self.sub_jmax + 1)
-            if (i, j) not in self.visited and (i, j) not in self.obstacles
-        ]
+            for goal_cell in subgrid_cells:
+                if not rclpy.ok():
+                    return
 
-        for goal_cell in subgrid_cells:
-            if not rclpy.ok():
-                return
-
-            path = self.bfs_path(self.robot_cell, goal_cell)
-            retries = 0
-            while not path and retries < 5:
-                retries += 1
-                self.replan_count += 1
-                time.sleep(0.05)
                 path = self.bfs_path(self.robot_cell, goal_cell)
+                retries = 0
+                while not path and retries < 5:
+                    retries += 1
+                    self.replan_count += 1
+                    time.sleep(0.05)
+                    path = self.bfs_path(self.robot_cell, goal_cell)
 
-            if not path:
-                self.unreachable.append(goal_cell)
-                self.get_logger().error(f"No path to {goal_cell} after retries")
-                continue
+                if not path:
+                    self.unreachable.append(goal_cell)
+                    self.get_logger().error(f"No path to {goal_cell} after retries")
+                    continue
 
-            for next_cell in path[1:]:
-                time.sleep(0.05)
-                with self.lock:
-                    if next_cell in self.dynamic_obs:
-                        self.get_logger().info(f"Blocked at {next_cell}, aborting")
-                        break
-                if self.move_to_cell(next_cell):
-                    self.publish_all()
+                for next_cell in path[1:]:
+                    time.sleep(0.05)
+                    with self.lock:
+                        if next_cell in self.dynamic_obs:
+                            self.get_logger().info(f"Blocked at dynamic cell{next_cell}, aborting")
+                            break
+                    if self.move_to_cell(next_cell):
+                        self.publish_all()
 
-        # 4) Print coverage statistics (only counting that robot’s subgrid)
-        t1 = time.time()
-        subgrid_cells_set = {
-            (i, j)
-            for i in range(self.sub_imin, self.sub_imax + 1)
-            for j in range(self.sub_jmin, self.sub_jmax + 1)
-        }
-        blocked_in_subgrid = len(self.obstacles.intersection(subgrid_cells_set))
-        total_cells = ((self.sub_imax - self.sub_imin + 1) *
-                       (self.sub_jmax - self.sub_jmin + 1)
-                       - blocked_in_subgrid)
-        unique_visits = len(self.visited)
-        efficiency = unique_visits / max(1, self.step_count)
+            # 4) Print coverage statistics (only counting that robot’s subgrid)
+            t1 = time.time()
+            subgrid_cells_set = {
+                (i, j)
+                for i in range(self.sub_imin, self.sub_imax + 1)
+                for j in range(self.sub_jmin, self.sub_jmax + 1)
+            }
+            blocked_in_subgrid = len(self.obstacles.intersection(subgrid_cells_set))
+            total_cells = ((self.sub_imax - self.sub_imin + 1) *
+                        (self.sub_jmax - self.sub_jmin + 1)
+                        - blocked_in_subgrid)
+            unique_visits = len(self.visited)
+            efficiency = unique_visits / max(1, self.step_count)
 
-        self.get_logger().info("=== Coverage Statistics ===")
-        # self.get_logger().info(f"Time elapsed: {t1 - t0:.1f}s")
-        self.get_logger().info(
-            f"Steps: {self.step_count}, Unique: {unique_visits}/{total_cells}")
-        self.get_logger().info(
-            f"Revisits: {self.revisit_count}, Replans: {self.replan_count}")
-        self.get_logger().info(f"Efficiency: {efficiency * 100:.1f}%")
-        if self.unreachable:
-            self.get_logger().warn(f"Unreachable cells: {self.unreachable}")
-        self.get_logger().info("=== End Statistics ===")
+            self.get_logger().info("=== Coverage Statistics ===")
+            # self.get_logger().info(f"Time elapsed: {t1 - t0:.1f}s")
+            self.get_logger().info(
+                f"Steps: {self.step_count}, Unique: {unique_visits}/{total_cells}")
+            self.get_logger().info(
+                f"Revisits: {self.revisit_count}, Replans: {self.replan_count}")
+            self.get_logger().info(f"Efficiency: {efficiency * 100:.1f}%")
+            if self.unreachable:
+                self.get_logger().warn(f"Unreachable cells: {self.unreachable}")
+            self.get_logger().info("=== End Statistics ===")
 
 
 def main():

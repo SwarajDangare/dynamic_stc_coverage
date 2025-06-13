@@ -18,7 +18,7 @@ setup(
             'go_to_goal = multi_dyno_bot.go_to_goal:main',
             'stc_controller = multi_dyno_bot.stc_controller:main',
             'coverage_visualizer = multi_dyno_bot.coverage_visualizer:main',
-            'multi_stc_controller = multi_dyno_bot.multi_stc_controller:main',
+            'multi_stc_controller = multi_dyno_bot.multi_stc_controller:main'
         ],
     },
     data_files=[

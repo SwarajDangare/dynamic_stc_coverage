@@ -52,12 +52,12 @@ def generate_launch_description():
     # --- Define the six robot namespaces & EXACT spawn (x,y) so that each lies at center of its 20×30 block ---
     #    See partitioning in the explanation above.
     robot_positions = [
-        ('tb1',   9.75,  7.25),   # Block 2 (i=40..59, j=30..59)
-        ('tb2',  -0.25,  7.25),   # Block 1 (i=20..39, j=30..59)
-        ('tb3', -10.25,  7.25),   # Block 0 (i= 0..19, j=30..59)
-        ('tb4',   9.75, -7.75),   # Block 5 (i=40..59, j= 0..29)
-        ('tb5',  -0.25, -7.75),   # Block 4 (i=20..39, j= 0..29)
-        ('tb6', -10.25, -7.75),   # Block 3 (i= 0..19, j= 0..29)
+        ('tb1', -14.75, -14.75),   # Block 2 (i=40..59, j=30..59)
+        ('tb2', -14.75, -4.75),   # Block 1 (i=20..39, j=30..59)
+        ('tb3', -14.75,  5.25),   # Block 0 (i= 0..19, j=30..59)
+        ('tb4',   0.25, -14.75),   # Block 5 (i=40..59, j= 0..29)
+        ('tb5',   0.25, -4.75),   # Block 4 (i=20..39, j= 0..29)
+        ('tb6',   0.25, 5.25),   # Block 3 (i= 0..19, j= 0..29)
     ]
 
     # --- For each robot, chain spawn + STCController under its namespace ---
@@ -96,23 +96,23 @@ def generate_launch_description():
         # 3) STC controller under the same namespace, with that robot’s 20×30 bounds
         #    (sub_imin…sub_jmax correspond to table above)
         if name == 'tb1':
-            sub_args = {'sub_imin': 40, 'sub_imax': 59, 'sub_jmin': 30, 'sub_jmax': 59}
+            sub_args = {'sub_imin': 0, 'sub_imax': 29, 'sub_jmin': 0, 'sub_jmax': 19}
         elif name == 'tb2':
-            sub_args = {'sub_imin': 20, 'sub_imax': 39, 'sub_jmin': 30, 'sub_jmax': 59}
+            sub_args = {'sub_imin': 0, 'sub_imax': 29, 'sub_jmin': 20, 'sub_jmax': 39}
         elif name == 'tb3':
-            sub_args = {'sub_imin': 0,  'sub_imax': 19, 'sub_jmin': 30, 'sub_jmax': 59}
+            sub_args = {'sub_imin': 0, 'sub_imax': 29, 'sub_jmin': 40, 'sub_jmax': 59}
         elif name == 'tb4':
-            sub_args = {'sub_imin': 40, 'sub_imax': 59, 'sub_jmin': 0,  'sub_jmax': 29}
+            sub_args = {'sub_imin': 30, 'sub_imax': 59, 'sub_jmin': 0,  'sub_jmax': 19}
         elif name == 'tb5':
-            sub_args = {'sub_imin': 20, 'sub_imax': 39, 'sub_jmin': 0,  'sub_jmax': 29}
+            sub_args = {'sub_imin': 30, 'sub_imax': 59, 'sub_jmin': 20,  'sub_jmax': 39}
         elif name == 'tb6':
-            sub_args = {'sub_imin': 0,  'sub_imax': 19, 'sub_jmin': 0,  'sub_jmax': 29}
+            sub_args = {'sub_imin': 30, 'sub_imax': 59, 'sub_jmin': 40,  'sub_jmax': 59}
 
         stc = Node(
             package='multi_dyno_bot',
             namespace=ns,
-            executable='stc_controller',
-            name='stc_controller',
+            executable='multi_stc_controller',
+            name='multi_stc_controller',
             output='screen',
             parameters=[
                 {'use_sim_time': True},
