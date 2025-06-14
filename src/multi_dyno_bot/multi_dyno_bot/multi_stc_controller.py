@@ -5,11 +5,13 @@ from threading import Thread, Lock
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int32MultiArray
+from std_msgs.msg import Int32MultiArray , Int32
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import LaserScan
 from gazebo_msgs.msg import ModelStates
+from visualization_msgs.msg import Marker, MarkerArray
+
 
 
 class STCController(Node):
@@ -68,6 +70,11 @@ class STCController(Node):
         self.vis_pub = self.create_publisher(Int32MultiArray, 'stc/visited', 10)
         self.obs_pub = self.create_publisher(Int32MultiArray, 'stc/obstacles', 10)
         self.dyn_pub = self.create_publisher(Int32MultiArray, 'stc/dynamic_obstacles', 10)
+        self.marker_pub = self.create_publisher(MarkerArray, 'stc/markers', 10)
+
+        self.revisit_count_pub = self.create_publisher(Int32, 'stc/revisited', 10)
+        self.step_count_pub = self.create_publisher(Int32, 'stc/steps', 10)
+
         # self.create_timer(1.0, self.publish_all)  # publish once per second
 
         # Subscribers (all namespaced: /<ns>/odom, /<ns>/scan)
@@ -130,7 +137,7 @@ class STCController(Node):
             cell = self.world_to_cell(pose.position.x, pose.position.y)
             if name in self.static_names:
                 static_cells.add(cell)
-            if name in self.dynamic_box_names or name in self.other_robots:
+            if name in self.dynamic_box_names:
                 dynamic_cells.add(cell)
 
         with self.lock:
@@ -177,16 +184,54 @@ class STCController(Node):
         time.sleep(0.05)    
 
     def publish_all(self):
-        """Publish visited, obstacles, and dynamic obstacle sets once per second."""
-
         with self.lock:
             vis = [c for cell in self.visited    for c in cell]
-            obs = [c for cell in self.obstacles  for c in cell]
-            dyn = [c for cell in self.dynamic_obs for c in cell]
-        # if self.robot_name == 'tb1':
-        self.obs_pub.publish(Int32MultiArray(data=obs))
-        self.dyn_pub.publish(Int32MultiArray(data=dyn))
-        self.vis_pub.publish(Int32MultiArray(data=vis))
+            self.vis_pub.publish(Int32MultiArray(data=vis))
+            self.revisit_count_pub.publish(Int32(data=self.revisit_count))
+            self.step_count_pub.publish(Int32(data=self.step_count))
+
+        if self.robot_name == "tb1":
+            marker_array = MarkerArray()
+            idx = 0
+
+            for cell in self.static_obs:
+                x, y = self.cell_to_center(cell)
+                marker = Marker()
+                marker.header.frame_id = "odom"
+                marker.type = Marker.CUBE
+                marker.action = Marker.ADD
+                marker.pose.position.x = x
+                marker.pose.position.y = y
+                marker.pose.position.z = 0.04
+                marker.scale.x = marker.scale.y = marker.scale.z = 0.5
+                marker.color.r = 1.0
+                marker.color.g = 0.0
+                marker.color.b = 0.0
+                marker.color.a = 1.0
+                marker.id = idx
+                idx += 1
+                marker_array.markers.append(marker)
+
+            for cell in self.dynamic_obs:
+                x, y = self.cell_to_center(cell)
+                marker = Marker()
+                marker.header.frame_id = "odom"
+                marker.type = Marker.CUBE
+                marker.action = Marker.ADD
+                marker.pose.position.x = x
+                marker.pose.position.y = y
+                marker.pose.position.z = 0.04
+                marker.scale.x = marker.scale.y = marker.scale.z = 0.5
+                marker.color.r = 0.0
+                marker.color.g = 0.0
+                marker.color.b = 1.0
+                marker.color.a = 1.0
+                marker.id = idx
+                idx += 1
+                marker_array.markers.append(marker)
+
+            self.marker_pub.publish(marker_array)
+
 
     def move_to_cell(self, cell):
         """
@@ -223,7 +268,7 @@ class STCController(Node):
         # Move forward one full cell
         x_goal, y_goal = self.cell_to_center(cell)
         self.drive_forward(x_goal, y_goal)
-        self.get_logger().info(f"Moved from {curr} to {cell}")
+        # self.get_logger().info(f"Moved from {curr} to {cell}")
 
         with self.lock:
             x = self.robot_pose['x']
@@ -233,6 +278,7 @@ class STCController(Node):
             with self.lock:
                 self.robot_cell = cell
                 self.visited.add(curr)
+                self.visited.add(cell)
                 # self.get_logger().info(f"Visited cell {cell}")
 
         self.step_count += 1
@@ -275,7 +321,7 @@ class STCController(Node):
                 continue
 
             if distance <= tolerance:
-                self.get_logger().info(f"Reached cell center ({x_goal:.2f}, {y_goal:.2f}) within {tolerance*100:.0f} cm")
+                # self.get_logger().info(f"Reached cell center ({x_goal:.2f}, {y_goal:.2f}) within {tolerance*100:.0f} cm")
                 break
 
             # Proportional velocity control
@@ -328,7 +374,7 @@ class STCController(Node):
         # print(f"({self.sub_imin}, {self.sub_imax}, {self.sub_jmin}, {self.sub_jmax})")
             # Let everything come up (a 1 s pause)
         time.sleep(2.0)
-        self.get_logger().info(f"front distance {self. front_dist}")
+        # self.get_logger().info(f"front distance {self. front_dist}")
 
         order = []
         w, e = self.sub_imin, self.sub_imax
@@ -348,7 +394,7 @@ class STCController(Node):
             path = self.bfs_path(self.robot_cell, goal_cell)
             if not path:
                 continue
-            self.get_logger().info(f"Planned path: {path}")
+            # self.get_logger().info(f"Planned path: {path}")
             for next_cell in path[1:]:
                 # Very small pause so we don’t hammer the CPU
                 time.sleep(0.05)
@@ -356,10 +402,14 @@ class STCController(Node):
                     if next_cell in self.dynamic_obs:
                         self.get_logger().info(f"Dynamic block at {next_cell}")
                         break
-                self.get_logger().info(f"Attempting move from {self.robot_cell} to {next_cell}")
+                # self.get_logger().info(f"Attempting move from {self.robot_cell} to {next_cell}")
                 if self.move_to_cell(next_cell):
-                    self.get_logger().info(f"Moved to {next_cell}")
+                    # self.get_logger().info(f"Moved to {next_cell}")
                     self.publish_all()
+            # self.get_logger().info(f"Cells Remaining in {self.robot_name}'s Subgrid: {len(order) - len(self.visited)}")
+        
+        self.get_logger().info(f"STCController for {self.robot_name} completed sweep in subgrid. Going for full coverage...")
+                               
         subgrid_cells = [
             (i, j)
             for i in range(self.sub_imin, self.sub_imax + 1)
@@ -388,32 +438,34 @@ class STCController(Node):
                         break
                 if self.move_to_cell(next_cell):
                     self.publish_all()
-        # 4) Print coverage statistics (only counting that robot’s subgrid)
-        t1 = time.time()
-        subgrid_cells_set = {
-            (i, j)
-            for i in range(self.sub_imin, self.sub_imax + 1)
-            for j in range(self.sub_jmin, self.sub_jmax + 1)
-        }
-        blocked_in_subgrid = len(self.obstacles.intersection(subgrid_cells_set))
-        total_cells = ((self.sub_imax - self.sub_imin + 1) *
-                    (self.sub_jmax - self.sub_jmin + 1)
-                    - blocked_in_subgrid)
-        unique_visits = len(self.visited)
-        efficiency = unique_visits / max(1, self.step_count)
-        self.get_logger().info("=== Coverage Statistics ===")
-        # self.get_logger().info(f"Time elapsed: {t1 - t0:.1f}s")
-        self.get_logger().info(
-            f"Steps: {self.step_count}, Unique: {unique_visits}/{total_cells}")
-        self.get_logger().info(
-            f"Revisits: {self.revisit_count}, Replans: {self.replan_count}")
-        self.get_logger().info(f"Efficiency: {efficiency * 100:.1f}%")
+
+
+        # # 4) Print coverage statistics (only counting that robot’s subgrid)
+        # t1 = time.time()
+        # subgrid_cells_set = {
+        #     (i, j)
+        #     for i in range(self.sub_imin, self.sub_imax + 1)
+        #     for j in range(self.sub_jmin, self.sub_jmax + 1)
+        # }
+        # blocked_in_subgrid = len(self.obstacles.intersection(subgrid_cells_set))
+        # total_cells = ((self.sub_imax - self.sub_imin + 1) *
+        #             (self.sub_jmax - self.sub_jmin + 1)
+        #             - blocked_in_subgrid)
+        # unique_visits = len(self.visited)
+        # efficiency = unique_visits / max(1, self.step_count)
+        # self.get_logger().info("=== Coverage Statistics ===")
+        # # self.get_logger().info(f"Time elapsed: {t1 - t0:.1f}s")
+        # self.get_logger().info(
+        #     f"Steps: {self.step_count}, Unique: {unique_visits}/{total_cells}")
+        # self.get_logger().info(
+        #     f"Revisits: {self.revisit_count}, Replans: {self.replan_count}")
+        # self.get_logger().info(f"Efficiency: {efficiency * 100:.1f}%")
         if self.unreachable:
             self.get_logger().warn(f"Unreachable cells: {self.unreachable}")
-        self.get_logger().info("=== End Statistics ===")
-            # if self.move_to_cell(next_cell):
-            #     self.publish_all()
-    # if self.robot_name == 'tb1':
+        else:
+            self.get_logger().info(f"STCController for {self.robot_name} completed full coverage sweep!!!")
+        self.get_logger().info(f"=== End for {self.robot_name} ===")
+
         
 
 def main():

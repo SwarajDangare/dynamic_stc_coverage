@@ -31,12 +31,12 @@ class CoverageVisualizer(Node):
 
         # colors for each robot (RGB)
         self.colors = {
-            'tb1': (1.0, 0.0, 0.0),  # red
-            'tb2': (0.0, 1.0, 0.0),  # green
-            'tb3': (0.0, 0.0, 1.0),  # blue
-            'tb4': (1.0, 1.0, 0.0),  # yellow
-            'tb5': (1.0, 0.0, 1.0),  # magenta
-            'tb6': (0.0, 1.0, 1.0),  # cyan
+            'tb1': (1.0, 0.6, 0.2),  # Orange
+            'tb2': (0.5, 0.5, 0.5),  # Gray
+            'tb3': (0.2, 1.0, 0.2),  # Light Green
+            'tb4': (1.0, 1.0, 0.0),  # Yellow
+            'tb5': (0.0, 1.0, 1.0),  # Cyan
+            'tb6': (1.0, 0.0, 1.0),  # Magenta
         }
 
         # Subscribers
